@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "Public home for Hopper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krosop/hopper-site.git"
+  },
+  "homepage": "https://usehopper.vercel.app",
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve"
