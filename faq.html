@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Hopper</title>
+  <meta name="description" content="Answers about Hopper: auto-detect, downloading video from supported web pages, local conversion, formats, privacy, the companion, updates, and troubleshooting." />
+  <meta name="theme-color" content="#f1efe8" />
+  <link rel="canonical" href="https://usehopper.vercel.app/faq" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://usehopper.vercel.app/faq" />
+  <meta property="og:title" content="FAQ — Hopper" />
+  <meta property="og:description" content="Straight answers about auto-detect, downloads, formats, files, privacy, and the companion." />
+  <meta property="og:image" content="https://usehopper.vercel.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="/assets/img/hopper-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/img/icon-128.png" sizes="128x128" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/img/icon-128.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/styles.css?v=20261026-1" />
+  <script>
+    document.documentElement.classList.add("js");
+    window.addEventListener("error", function () {
+      document.documentElement.classList.remove("js");
+    });
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Hopper home">
+        <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+        <span>Hopper</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="/download">Download</a>
+        <a class="nav-link" href="/privacy">Privacy</a>
+        <a class="nav-link" href="/support">Support</a>
+        <a class="nav-link" href="/faq" aria-current="page">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button--small" href="/download">Get Hopper</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false" data-nav-toggle>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="mobile-nav" id="mobileNav" aria-label="Menu">
+    <div class="mobile-nav__inner">
+      <div class="mobile-nav__top">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close menu" data-nav-close>×</button>
+      </div>
+      <nav class="mobile-nav__links" aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/download">Download</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/support">Support</a>
+        <a href="/faq" aria-current="page">FAQ</a>
+      </nav>
+      <a class="button mobile-nav__cta" href="/download">Get Hopper</a>
+    </div>
+  </dialog>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="shell page-hero__inner">
+        <div>
+          <span class="kicker">FAQ</span>
+          <h1>Straight answers.</h1>
+        </div>
+        <p class="lede">What Hopper does, what it doesn't, and what to expect when a file doesn't cooperate.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="shell legal-wrap">
+        <aside class="legal-toc">
+          <h2>On this page</h2>
+          <a href="#basics">Basics</a>
+          <a href="#formats">Formats and files</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#companion">Companion</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </aside>
+
+        <div class="legal-body">
+          <section class="faq-category" id="basics">
+            <h2>Basics</h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">What is Hopper?</summary>
+                <div class="faq-answer"><p>A browser extension that detects video on supported pages, downloads it from the web through a small Windows companion, and converts or trims files on your own computer.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">How does auto-detect work?</summary>
+                <div class="faq-answer"><p>Open a supported video page and click Hopper. The Video tab reads the page you are already on, finds the video, and asks the companion for the available formats. No link hunting, no copy-paste.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Can Hopper download videos from the web?</summary>
+                <div class="faq-answer"><p>Yes, on supported video pages. Auto-detect finds the video, the companion fetches the format you choose over your own connection, and it saves to your Downloads folder. The companion is coming soon to the Microsoft Store; local file conversion works without it. Use it only on media you have the right to download and keep.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Is Hopper free?</summary>
+                <div class="faq-answer"><p>Yes. There is no account, subscription, or paid tier.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Which browser does it support?</summary>
+                <div class="faq-answer"><p>Microsoft Edge on Windows 10 and 11 is the supported target. Other Chromium browsers may load the package, but they are not tested or supported.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Is there a macOS or Linux version?</summary>
+                <div class="faq-answer"><p>No. Hopper is built for Windows and Microsoft Edge. The companion is a Windows app.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">How do I remove it?</summary>
+                <div class="faq-answer"><p>Open <code>edge://extensions</code>, find Hopper, and choose Remove. That deletes its local preferences. Converted files stay in your downloads folder.</p></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-category" id="formats">
+            <h2>Formats and files</h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Which output formats can I choose?</summary>
+                <div class="faq-answer"><p>MP4 and WebM for video; MP3 and M4A for audio. Each has three quality levels: high, balanced, and small.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Can I trim a file?</summary>
+                <div class="faq-answer"><p>Yes. Set a start and end time, or line up clips to merge. Times accept seconds or <code>mm:ss</code>.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Where are converted files saved?</summary>
+                <div class="faq-answer"><p>Wherever your browser saves downloads. Hopper hands the finished file to the browser's normal download flow and keeps no copy.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Why is the output larger than the source?</summary>
+                <div class="faq-answer"><p>Converting between codecs re-encodes the file. A high quality setting can produce a larger file than a highly compressed source. Try the balanced or small setting.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Can Hopper open a file with DRM?</summary>
+                <div class="faq-answer"><p>No. Hopper does not bypass access controls or copy protection. Use it on media you have the right to convert or save.</p></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-category" id="privacy">
+            <h2>Privacy</h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Does Hopper upload my files?</summary>
+                <div class="faq-answer"><p>No. Local file conversion happens on your computer. Auto-detect and web downloads use the companion, which fetches the page you choose through your own connection.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Does Hopper collect analytics?</summary>
+                <div class="faq-answer"><p>No analytics, telemetry, advertising IDs, or tracking pixels. There is nothing to opt out of.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">What does the extension store?</summary>
+                <div class="faq-answer"><p>Your last output format and quality, in local browser storage. Removing the extension deletes them.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Does it read every page I visit?</summary>
+                <div class="faq-answer"><p>No. It reads the active tab's address when you open the Video tab so it can detect the video. It reads page contents only when you click <strong>Find media on this page</strong>, and only to list direct video and audio links.</p></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-category" id="companion">
+            <h2>Companion</h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Do I need the companion?</summary>
+                <div class="faq-answer"><p>For local file conversion, no. For auto-detect and web downloads, yes. The companion is the Windows app that fetches the media; its Microsoft Store listing is coming soon.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Where do I get the companion?</summary>
+                <div class="faq-answer"><p>A Microsoft Store listing is coming soon. It is not offered on this page yet; the extension's local file conversion works without it.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">Does the companion send data anywhere?</summary>
+                <div class="faq-answer"><p>It contacts the page you choose, exactly as a browser would. The extension reaches the companion over <code>127.0.0.1</code>, which is your own machine.</p></div>
+              </details>
+            </div>
+          </section>
+
+          <section class="faq-category" id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Why does Edge show a developer-mode warning?</summary>
+                <div class="faq-answer"><p>The package installs as an unpacked extension until the Edge Add-ons listing opens. Edge shows that warning for every unpacked extension. It is not specific to Hopper.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">A conversion stops partway</summary>
+                <div class="faq-answer"><p>Try a shorter trim or a smaller file, and close heavy tabs to free memory. If it still fails, email the file type, size, and the exact message.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">The popup won't open</summary>
+                <div class="faq-answer"><p>Reload the extension from <code>edge://extensions</code>, then reopen it. If it still won't open, remove it and load the folder again.</p></div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-question">How do updates work?</summary>
+                <div class="faq-answer"><p>Unpacked extensions do not update themselves. Download the new package, replace the folder, and reload Hopper. Once the Edge Add-ons listing is live, updates will come through the store.</p></div>
+              </details>
+            </div>
+          </section>
+
+          <div class="faq-contact">
+            <div>
+              <h2>Still have a question?</h2>
+              <p>Email is the support channel. Include your Hopper version and the exact message you saw.</p>
+            </div>
+            <a class="button" href="mailto:hopperdev@zohomail.com?subject=Hopper%20question">Email support</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="shell cta-inner reveal">
+        <div>
+          <h2>Ready to try it?</h2>
+          <p>The extension package is available now. The Edge Add-ons and Microsoft Store listings are in progress.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button--large" href="/download">Get Hopper</a>
+          <a class="button button--secondary button--large" href="/support">Get support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand-col">
+        <a class="footer-brand" href="/">
+          <img src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <p class="footer-note">Video downloads, conversion, and trimming for Windows and Microsoft Edge. No account, no cloud upload, no analytics.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <a href="/download">Download</a>
+        <a href="/faq">FAQ</a>
+        <a href="/support">Support</a>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a href="mailto:hopperdev@zohomail.com">hopperdev@zohomail.com</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© 2026 Hopper</span>
+      <span>No cookies. No analytics.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/app.js?v=20261026-1" defer></script>
+</body>
+</html>

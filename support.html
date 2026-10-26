@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Hopper</title>
+  <meta name="description" content="Help with installing Hopper, auto-detect, downloading video from supported web pages, converting and trimming files, and the Windows companion. Contact hopperdev@zohomail.com." />
+  <meta name="theme-color" content="#f1efe8" />
+  <link rel="canonical" href="https://usehopper.vercel.app/support" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://usehopper.vercel.app/support" />
+  <meta property="og:title" content="Support — Hopper" />
+  <meta property="og:description" content="Install help, conversion fixes, and a direct email contact." />
+  <meta property="og:image" content="https://usehopper.vercel.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="/assets/img/hopper-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/img/icon-128.png" sizes="128x128" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/img/icon-128.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/styles.css?v=20261026-1" />
+  <script>
+    document.documentElement.classList.add("js");
+    window.addEventListener("error", function () {
+      document.documentElement.classList.remove("js");
+    });
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Hopper home">
+        <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+        <span>Hopper</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="/download">Download</a>
+        <a class="nav-link" href="/privacy">Privacy</a>
+        <a class="nav-link" href="/support" aria-current="page">Support</a>
+        <a class="nav-link" href="/faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button--small" href="/download">Get Hopper</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false" data-nav-toggle>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="mobile-nav" id="mobileNav" aria-label="Menu">
+    <div class="mobile-nav__inner">
+      <div class="mobile-nav__top">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close menu" data-nav-close>×</button>
+      </div>
+      <nav class="mobile-nav__links" aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/download">Download</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/support" aria-current="page">Support</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+      <a class="button mobile-nav__cta" href="/download">Get Hopper</a>
+    </div>
+  </dialog>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="shell page-hero__inner">
+        <div>
+          <span class="kicker">Support</span>
+          <h1>Let's get it working.</h1>
+          <div class="page-hero__meta">
+            <span>Email support</span>
+            <span>No account needed</span>
+            <span>Windows 10 and 11</span>
+          </div>
+        </div>
+        <p class="lede">Most problems are an install step, a browser setting, or a file that needs a different format. Start with the fixes below, then write to us.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="shell">
+        <div class="info-grid">
+          <a class="info-card support-card reveal" href="#install-help">
+            <span class="support-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4v10" />
+                <path d="m8 10 4 4 4-4" />
+                <path d="M4 18h16" />
+              </svg>
+            </span>
+            <h2>Install help</h2>
+            <p>The package, Developer mode, and loading the folder in Edge.</p>
+          </a>
+          <a class="info-card support-card reveal" href="#conversion-help">
+            <span class="support-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 7h16" />
+                <path d="M4 12h10" />
+                <path d="M4 17h6" />
+                <path d="m17 14 3 3-3 3" />
+                <path d="M20 17h-5" />
+              </svg>
+            </span>
+            <h2>Conversion help</h2>
+            <p>Formats, quality, trimming, and what to do when a file fails.</p>
+          </a>
+          <a class="info-card support-card reveal" href="#companion-help">
+            <span class="support-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="12" rx="2" />
+                <path d="M8 20h8" />
+                <path d="M12 16v4" />
+              </svg>
+            </span>
+            <h2>Companion help</h2>
+            <p>Auto-detect, web downloads, and the Microsoft Store status.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="install-help">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Install</span>
+            <h2>The extension doesn't appear.</h2>
+          </div>
+          <p class="lede">Edge only loads unpacked extensions when Developer mode is on and the selected folder contains the manifest.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary class="faq-question">Load unpacked is missing</summary>
+            <div class="faq-answer"><p>Open <code>edge://extensions</code> and turn on <strong>Developer mode</strong> in the left rail. The unpacked controls appear after that.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Edge says the manifest is missing</summary>
+            <div class="faq-answer"><p>You selected the outer folder, not the extension folder. Select the folder that directly contains <code>manifest.json</code>, then try again.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The toolbar icon is hidden</summary>
+            <div class="faq-answer"><p>Open the extensions menu in Edge, find Hopper, and choose the pin control. The popup is the whole interface; there is no separate window.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The extension disappeared after a restart</summary>
+            <div class="faq-answer"><p>Check that the folder still exists and has not been moved or deleted. Unpacked extensions load from that folder each time Edge starts.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="conversion-help">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Conversion</span>
+            <h2>The output isn't what you expected.</h2>
+          </div>
+          <p class="lede">Conversion is local, so the fix is usually the source file, the chosen format, or the available memory.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary class="faq-question">A conversion stops or fails</summary>
+            <div class="faq-answer"><p>Try a smaller file or a shorter trim first. Long videos and high quality settings need more memory. Close other heavy tabs and try again.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The audio is missing</summary>
+            <div class="faq-answer"><p>Check the source file in another player. If the source has no audio track, no output format can add one. If it does, try MP4 or WebM as the output.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The result won't play in another app</summary>
+            <div class="faq-answer"><p>Try MP4 for the widest compatibility. WebM is efficient but some editors and older players do not accept it. MP3 and M4A are audio-only.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The trim starts in the wrong place</summary>
+            <div class="faq-answer"><p>Use seconds or <code>mm:ss</code>. Check the start is earlier than the end, and keep both inside the file's duration.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="companion-help">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Companion</span>
+            <h2>Auto-detect needs the helper.</h2>
+          </div>
+          <p class="lede">Local file conversion does not need the companion. Auto-detect and web downloads do. If you use them, both halves have to be running and connected.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary class="faq-question">Is the companion available?</summary>
+            <div class="faq-answer"><p>A Microsoft Store listing is coming soon. It is not offered on this page yet; auto-detect and web downloads wait for it, while local file conversion works without it.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">The extension says the companion is offline</summary>
+            <div class="faq-answer"><p>Start the companion, then reopen the Hopper popup. The extension only talks to the local service over <code>127.0.0.1</code>; it does not use the internet.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">A pasted link fails</summary>
+            <div class="faq-answer"><p>Make sure it is a direct media link, not a page that needs a sign-in or a player. Some hosts block downloads or expire their links. Try the link in a browser first.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="section-kicker">Contact</span>
+            <h2>Still stuck? Write to us.</h2>
+            <p class="lede">Email is the support channel. Include the details below so we can reproduce the problem without a round trip.</p>
+          </div>
+          <div class="contact-panel__actions">
+            <a class="button button--large" href="mailto:hopperdev@zohomail.com?subject=Hopper%20support">Email hopperdev@zohomail.com</a>
+            <p class="contact-panel__note">We read every message. Response times vary.</p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card reveal">
+            <h3>What to include</h3>
+            <ul class="check-list">
+              <li>Hopper version</li>
+              <li>Microsoft Edge version</li>
+              <li>The file type and size</li>
+              <li>The exact message you saw</li>
+            </ul>
+          </article>
+          <article class="info-card reveal">
+            <h3>What not to send</h3>
+            <ul class="check-list">
+              <li>Passwords or payment details</li>
+              <li>Private links you don't want shared</li>
+              <li>Large media files</li>
+              <li>Personal documents</li>
+            </ul>
+          </article>
+          <article class="info-card reveal">
+            <h3>Privacy first</h3>
+            <p>Hopper never asks for an account, a password, or a payment. Anything that does is not us.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="shell cta-inner reveal">
+        <div>
+          <h2>Start with the install page.</h2>
+          <p>The four steps, the requirements, and the current package are all in one place.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button--large" href="/download">Open the download page</a>
+          <a class="button button--secondary button--large" href="/faq">Read the FAQ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand-col">
+        <a class="footer-brand" href="/">
+          <img src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <p class="footer-note">Video downloads, conversion, and trimming for Windows and Microsoft Edge. No account, no cloud upload, no analytics.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <a href="/download">Download</a>
+        <a href="/faq">FAQ</a>
+        <a href="/support">Support</a>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a href="mailto:hopperdev@zohomail.com">hopperdev@zohomail.com</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© 2026 Hopper</span>
+      <span>No cookies. No analytics.</span>
+    </div>
+  </footer>
+
+  <script src="/assets/app.js?v=20261026-1" defer></script>
+</body>
+</html>

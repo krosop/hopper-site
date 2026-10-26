@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hopper — Download, convert, and trim video</title>
+  <meta name="description" content="Hopper detects video on supported pages, downloads it through a small local companion, and converts or trims files on your computer. MP4, WebM, MP3, and M4A. No account, no cloud upload." />
+  <meta name="theme-color" content="#f1efe8" />
+  <link rel="canonical" href="https://usehopper.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://usehopper.vercel.app/" />
+  <meta property="og:title" content="Hopper — Watch it. Download it. Keep it." />
+  <meta property="og:description" content="Auto-detect video in your open tab. Download it through a local companion, then convert or trim files on your computer. No account, no cloud upload." />
+  <meta property="og:image" content="https://usehopper.vercel.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="/assets/img/hopper-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/img/icon-128.png" sizes="128x128" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/img/icon-128.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/styles.css?v=20261026-1" />
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      if (window.sessionStorage.getItem("hopper-intro") !== "seen") {
+        document.documentElement.classList.add("intro-pending");
+      }
+    } catch (error) {
+      document.documentElement.classList.add("intro-pending");
+    }
+    window.addEventListener("error", function () {
+      document.documentElement.classList.remove("js");
+    });
+  </script>
+</head>
+<body>
+  <div class="intro" data-intro aria-hidden="true">
+    <span class="intro__panel intro__panel--top"></span>
+    <span class="intro__panel intro__panel--bottom"></span>
+    <span class="intro__seam"></span>
+    <span class="intro__core">
+      <span class="intro__mark">
+        <img src="/assets/img/hopper-mark.svg" alt="" width="46" height="46" />
+      </span>
+      <span class="intro__name">Hopper</span>
+      <span class="intro__rule"><i></i></span>
+      <span class="intro__status">Finding the video</span>
+    </span>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Hopper home">
+        <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+        <span>Hopper</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="/download">Download</a>
+        <a class="nav-link" href="/privacy">Privacy</a>
+        <a class="nav-link" href="/support">Support</a>
+        <a class="nav-link" href="/faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button--small" href="/download">Get Hopper</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false" data-nav-toggle>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="mobile-nav" id="mobileNav" aria-label="Menu">
+    <div class="mobile-nav__inner">
+      <div class="mobile-nav__top">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <button class="mobile-nav__close" type="button" aria-label="Close menu" data-nav-close>×</button>
+      </div>
+      <nav class="mobile-nav__links" aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/download">Download</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/support">Support</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+      <a class="button mobile-nav__cta" href="/download">Get Hopper</a>
+    </div>
+  </dialog>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <span class="kicker">Video downloader for Microsoft Edge</span>
+          <h1>
+            <span class="hero-line"><span>Watch it.</span></span>
+            <span class="hero-line"><span>Download it.</span></span>
+            <span class="hero-line"><span><em>Keep it.</em></span></span>
+          </h1>
+          <p class="lede">Hopper is the extension that spots the video on the page you're watching, then downloads it from the web through a small local companion. Convert it, trim it, keep it — no account, no cloud upload, no link hunting.</p>
+          <div class="hero-actions">
+            <a class="button button--large" href="/download">
+              Download Hopper
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4v14" />
+                <path d="m6 12 6 6 6-6" />
+              </svg>
+            </a>
+            <a class="button button--secondary button--large" href="#auto-detect">See auto-detect</a>
+          </div>
+          <ul class="hero-facts">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 8V5a1 1 0 0 1 1-1h3" />
+                <path d="M16 4h3a1 1 0 0 1 1 1v3" />
+                <path d="M20 16v3a1 1 0 0 1-1 1h-3" />
+                <path d="M8 20H5a1 1 0 0 1-1-1v-3" />
+                <path d="m10 9 5 3-5 3z" />
+              </svg>
+              Auto-detect
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3.5 12h17" />
+                <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" />
+              </svg>
+              Web downloads
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="4" y="10" width="16" height="10" rx="3" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              No account
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6.5 18a4.5 4.5 0 0 1-.4-8.98A6 6 0 0 1 17.7 8.5 4 4 0 0 1 17 16.5" />
+                <path d="m3 3 18 18" />
+              </svg>
+              No cloud upload
+            </li>
+          </ul>
+          <p class="hero-note">Auto-detect and web downloads use the companion — coming soon to the Microsoft Store. Local file conversion works without it.</p>
+        </div>
+
+        <div class="machine-stage" data-machine-stage data-scene>
+          <span class="scene-ring scene-ring--a" aria-hidden="true"></span>
+          <span class="scene-ring scene-ring--b" aria-hidden="true"></span>
+          <div class="machine-aura" aria-hidden="true"></div>
+
+          <div class="detect-float" data-depth="18">
+            <button class="detect-card" type="button" data-detect-demo aria-label="Replay the auto-detect demo" title="Replay the auto-detect demo">
+            <span class="detect-chrome" aria-hidden="true">
+              <span class="detect-dots"><i></i><i></i><i></i></span>
+              <span class="detect-address">your open tab</span>
+              <span class="detect-live"><i></i> Auto</span>
+            </span>
+            <span class="detect-body" aria-hidden="true">
+              <span class="detect-frame">
+                <span class="detect-play"></span>
+                <span class="detect-scan"></span>
+                <span class="detect-frame__time">04:12</span>
+              </span>
+              <span class="detect-copy">
+                <span class="detect-label">Auto-detect</span>
+                <strong data-detect-title>Video found</strong>
+                <span data-detect-meta>MP4 · ready to save</span>
+              </span>
+              <span class="detect-badge" data-detect-badge>Ready</span>
+            </span>
+            </button>
+          </div>
+
+          <div class="file-rail" role="group" aria-label="Example files" data-depth="26">
+            <button class="file-chip file-chip--a" type="button" data-file-chip aria-label="Send a MOV file through the hopper">
+              <span class="file-chip__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3h8l4 4v14H6z" />
+                  <path d="M14 3v5h5" />
+                </svg>
+              </span>
+              MOV
+            </button>
+            <button class="file-chip file-chip--b" type="button" data-file-chip aria-label="Send an MKV file through the hopper">
+              <span class="file-chip__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3h8l4 4v14H6z" />
+                  <path d="M14 3v5h5" />
+                </svg>
+              </span>
+              MKV
+            </button>
+            <button class="file-chip file-chip--c" type="button" data-file-chip aria-label="Send a WAV file through the hopper">
+              <span class="file-chip__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 15V9" />
+                  <path d="M8.5 18V6" />
+                  <path d="M12 14V10" />
+                  <path d="M15.5 19V5" />
+                  <path d="M19 13v-2" />
+                </svg>
+              </span>
+              WAV
+            </button>
+            <button class="file-chip file-chip--d" type="button" data-file-chip aria-label="Send an AVI file through the hopper">
+              <span class="file-chip__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3h8l4 4v14H6z" />
+                  <path d="M14 3v5h5" />
+                </svg>
+              </span>
+              AVI
+            </button>
+          </div>
+
+          <div class="machine-tilt" data-machine-tilt data-depth="8">
+            <div class="machine">
+              <span class="machine-sheen" aria-hidden="true"></span>
+              <div class="machine-bar">
+                <div class="machine-id">
+                  <img src="/assets/img/hopper-mark.svg" alt="" width="21" height="21" />
+                  Hopper
+                </div>
+                <span class="machine-pill">On this device</span>
+              </div>
+              <div class="machine-body">
+                <div class="machine-ticks" aria-hidden="true">
+                  <span>IN</span>
+                  <span>LOCAL</span>
+                  <span>OUT</span>
+                </div>
+                <div class="funnel" aria-hidden="true"></div>
+                <div class="funnel-glow" aria-hidden="true"></div>
+                <div class="funnel-pin" aria-hidden="true"></div>
+                <div class="output-tray">
+                  <div class="output-chip" data-output-chip aria-live="polite">
+                    <span class="output-chip__icon">
+                      <svg data-output-icon="video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="6" width="13" height="12" rx="3" />
+                        <path d="m16 10 5-3v10l-5-3z" />
+                      </svg>
+                      <svg data-output-icon="audio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M9 18V6l10-2v12" />
+                        <circle cx="6.5" cy="18" r="2.5" />
+                        <circle cx="16.5" cy="16" r="2.5" />
+                      </svg>
+                    </span>
+                    <span class="output-chip__copy">
+                      <span class="output-chip__name" data-output-name>MP4</span>
+                      <span class="output-chip__meta" data-output-meta>H.264 + AAC · video</span>
+                    </span>
+                    <span class="output-chip__check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 12 4.5 4.5L19 7" />
+                      </svg>
+                    </span>
+                    <span class="trim-flag">Trimmed</span>
+                  </div>
+                </div>
+                <span class="machine-note">Nothing leaves this panel.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="format-switch" role="group" aria-label="Output format" data-depth="14">
+            <button class="format-option" type="button" data-hero-format="mp4" aria-pressed="true">MP4</button>
+            <button class="format-option" type="button" data-hero-format="webm" aria-pressed="false">WebM</button>
+            <button class="format-option" type="button" data-hero-format="mp3" aria-pressed="false">MP3</button>
+            <button class="format-option" type="button" data-hero-format="m4a" aria-pressed="false">M4A</button>
+          </div>
+          <p class="machine-hint" data-depth="20">
+            <span class="machine-hint__pointer">Drag a file in, spin the machine, or tap one.</span>
+            <span class="machine-hint__touch">Tap a file to send it, then pick a format.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Product principles">
+      <div class="shell proof-inner">
+        <div class="proof-item">
+          <span class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8V5a1 1 0 0 1 1-1h3" />
+              <path d="M16 4h3a1 1 0 0 1 1 1v3" />
+              <path d="M20 16v3a1 1 0 0 1-1 1h-3" />
+              <path d="M8 20H5a1 1 0 0 1-1-1v-3" />
+              <path d="m10 9 5 3-5 3z" />
+            </svg>
+          </span>
+          <span class="proof-copy">
+            <strong>Auto-detect + web downloads</strong>
+            <span>Finds the video, then fetches it.</span>
+          </span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 7h16v12H4z" />
+              <path d="M8 7V5h8v2" />
+              <path d="M12 11v5" />
+              <path d="m9.5 13.5 2.5 2.5 2.5-2.5" />
+            </svg>
+          </span>
+          <span class="proof-copy">
+            <strong>No cloud upload</strong>
+            <span>Your files stay on your machine.</span>
+          </span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v3" />
+              <path d="M12 18v3" />
+              <path d="m5.6 5.6 2.1 2.1" />
+              <path d="m16.3 16.3 2.1 2.1" />
+              <path d="M3 12h3" />
+              <path d="M18 12h3" />
+              <path d="m5.6 18.4 2.1-2.1" />
+              <path d="m16.3 7.7 2.1-2.1" />
+              <circle cx="12" cy="12" r="3.2" />
+            </svg>
+          </span>
+          <span class="proof-copy">
+            <strong>No analytics</strong>
+            <span>Nothing to opt out of.</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section web-section" id="auto-detect">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Download from the web</span>
+            <h2>The internet is the input.</h2>
+          </div>
+          <p class="lede">Open a supported video page and let Hopper do the looking. Auto-detect finds the video, the companion fetches it over your own connection, and the file lands in your Downloads folder — no link hunting, no cloud middleman.</p>
+        </div>
+
+        <div class="web-flow reveal" data-web-flow>
+          <div class="web-flow__stage" role="img" aria-label="Animated demo: Hopper detects a video in an open browser tab, downloads it through the local companion, and saves an MP4 file to the Downloads folder.">
+            <div class="web-browser">
+              <div class="web-browser__bar">
+                <span class="web-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="web-browser__url">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="5" y="10" width="14" height="10" rx="2" />
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                  </svg>
+                  <span>your open video page</span>
+                  <span class="web-browser__scan" aria-hidden="true"></span>
+                </span>
+                <span class="web-browser__auto"><i></i> Auto</span>
+              </div>
+              <div class="web-browser__page">
+                <div class="web-browser__poster">
+                  <span class="web-browser__glow" aria-hidden="true"></span>
+                  <span class="web-browser__play" aria-hidden="true"></span>
+                  <span class="web-browser__scanline" aria-hidden="true"></span>
+                  <span class="web-browser__time" aria-hidden="true">08:24</span>
+                </div>
+                <div class="web-browser__meta" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="web-browser__toast">
+                  <span class="web-browser__toast-mark" aria-hidden="true">
+                    <img src="/assets/img/hopper-mark.svg" alt="" width="22" height="22" />
+                  </span>
+                  <span class="web-browser__toast-copy">
+                    <strong>Video found</strong>
+                    <span>MP4 · best available · ready to save</span>
+                  </span>
+                  <span class="web-browser__toast-badge">Ready</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="web-transfer" aria-hidden="true">
+              <span class="web-transfer__label">local companion</span>
+              <span class="web-transfer__line"><i></i></span>
+              <span class="web-transfer__note">your connection</span>
+            </div>
+
+            <div class="web-save" aria-hidden="true">
+              <div class="web-save__top">
+                <span>Downloads</span>
+                <span data-web-state>Waiting</span>
+              </div>
+              <div class="web-save__file">
+                <span class="web-save__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="6" width="13" height="12" rx="3" />
+                    <path d="m16 10 5-3v10l-5-3z" />
+                  </svg>
+                </span>
+                <span class="web-save__copy">
+                  <strong>Your video.mp4</strong>
+                  <span>Best available · saved locally</span>
+                </span>
+                <span class="web-save__check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m5 12 4.5 4.5L19 7" />
+                  </svg>
+                </span>
+              </div>
+              <div class="web-save__progress"><i data-web-progress></i></div>
+            </div>
+          </div>
+          <div class="web-flow__bottom">
+            <p class="web-flow__caption">
+              <span class="web-flow__live" aria-hidden="true"><i></i> Demo loop</span>
+              Auto-detect in the extension. Fetching in the companion.
+            </p>
+            <button class="web-flow__replay" type="button" data-web-replay>Replay</button>
+          </div>
+        </div>
+
+        <div class="steps reveal">
+          <span class="step-rail" aria-hidden="true"></span>
+          <div class="step">
+            <span class="step-index">01</span>
+            <h3>Open the page</h3>
+            <p>Watch the video in your browser like you normally would. Hopper works from the tab you are already on.</p>
+          </div>
+          <div class="step">
+            <span class="step-index">02</span>
+            <h3>Hopper finds it</h3>
+            <p>The extension detects the video and asks the companion for the formats available on that page.</p>
+          </div>
+          <div class="step">
+            <span class="step-index">03</span>
+            <h3>Download and keep</h3>
+            <p>Pick video, audio, or both. It downloads from the web over your connection, straight to your Downloads folder.</p>
+          </div>
+        </div>
+        <p class="section-note">The extension does the finding; the companion does the fetching. Both are needed for auto-detect and web downloads, and the companion's Microsoft Store listing is coming soon. Local conversion works without it. Use Hopper only on media you have the right to download and keep.</p>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">The workbench</span>
+            <h2>Everything you need. Nothing you have to send away.</h2>
+          </div>
+          <p class="lede">Auto-detect, download, convert, and trim in one small popup. The page is the input, the file stays on your desk, and the result lands in your downloads folder.</p>
+        </div>
+
+        <div class="workbench">
+          <article class="feature-panel feature-panel--dark reveal">
+            <div class="feature-panel__top">
+              <span class="feature-number">01 / Auto-detect</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 8V5a1 1 0 0 1 1-1h3" />
+                <path d="M16 4h3a1 1 0 0 1 1 1v3" />
+                <path d="M20 16v3a1 1 0 0 1-1 1h-3" />
+                <path d="M8 20H5a1 1 0 0 1-1-1v-3" />
+                <path d="m10 9 5 3-5 3z" />
+              </svg>
+            </div>
+            <div>
+              <h3>The video in your tab.</h3>
+              <p>Open a video page. Hopper detects it, asks the companion for the available formats, and puts video, audio, or both one click away.</p>
+              <div class="detect-mini" aria-hidden="true">
+                <div class="detect-mini__bar">
+                  <span class="detect-mini__dots"><i></i><i></i><i></i></span>
+                  <span class="detect-mini__address">your open tab</span>
+                  <span class="detect-mini__signal">Auto</span>
+                </div>
+                <div class="detect-mini__body">
+                  <span class="detect-mini__thumb"><i></i></span>
+                  <span class="detect-mini__copy">
+                    <strong>Video found</strong>
+                    <span>MP4 · 1080p · video + audio</span>
+                  </span>
+                  <span class="detect-mini__pill">Ready</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="feature-stack">
+            <article class="feature-panel reveal">
+              <div class="feature-panel__top">
+                <span class="feature-number">02 / Convert</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 7h16" />
+                  <path d="M4 12h10" />
+                  <path d="M4 17h6" />
+                  <path d="m17 14 3 3-3 3" />
+                  <path d="M20 17h-5" />
+                </svg>
+              </div>
+              <h3>One file in. The format you need out.</h3>
+              <p>Pick an output format and a quality level. The converter ships inside the extension, so a local file never needs another install.</p>
+              <div class="format-strip" aria-hidden="true">
+                <span class="is-active">MP4</span>
+                <span>WebM</span>
+                <span>MP3</span>
+                <span>M4A</span>
+              </div>
+            </article>
+
+            <article class="feature-panel reveal">
+              <div class="feature-panel__top">
+                <span class="feature-number">03 / Trim</span>
+                <span class="eyebrow">Start → end</span>
+              </div>
+              <h3>Keep the part that matters.</h3>
+              <p>Set a start and end time, or line up clips to merge. The rest stays out of the output.</p>
+              <div class="trim-visual" aria-hidden="true">
+                <div class="trim-track">
+                  <span class="trim-selection">
+                    <span class="trim-handle trim-handle--start"></span>
+                    <span class="trim-handle trim-handle--end"></span>
+                  </span>
+                </div>
+                <div class="trim-times">
+                  <span>00:00</span>
+                  <span>00:18</span>
+                  <span>00:42</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line" id="formats">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Formats</span>
+            <h2>Four formats. No guessing.</h2>
+          </div>
+          <p class="lede">Choose the container that fits the job. Hopper handles the codecs so you can get back to the file.</p>
+        </div>
+
+        <div class="format-lab format-lab--deck">
+          <div class="format-picker reveal" role="group" aria-label="Choose a format to inspect">
+            <button type="button" data-lab-format="mp4" aria-pressed="true">
+              <span class="format-picker__label">
+                <span class="format-picker__name">MP4</span>
+                <span class="format-picker__note">Video, H.264 + AAC</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m5 12 4.5 4.5L19 7" />
+              </svg>
+            </button>
+            <button type="button" data-lab-format="webm" aria-pressed="false">
+              <span class="format-picker__label">
+                <span class="format-picker__name">WebM</span>
+                <span class="format-picker__note">Video, VP8 + Vorbis</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m5 12 4.5 4.5L19 7" />
+              </svg>
+            </button>
+            <button type="button" data-lab-format="mp3" aria-pressed="false">
+              <span class="format-picker__label">
+                <span class="format-picker__name">MP3</span>
+                <span class="format-picker__note">Audio, MPEG audio</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m5 12 4.5 4.5L19 7" />
+              </svg>
+            </button>
+            <button type="button" data-lab-format="m4a" aria-pressed="false">
+              <span class="format-picker__label">
+                <span class="format-picker__name">M4A</span>
+                <span class="format-picker__note">Audio, AAC</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m5 12 4.5 4.5L19 7" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="format-stage reveal" data-format-stage>
+            <span class="format-stage__grid" aria-hidden="true"></span>
+            <span class="format-stage__halo" aria-hidden="true"></span>
+            <div class="format-deck" data-format-deck>
+              <article class="format-card" data-format-card="mp4" data-position="active" aria-hidden="false">
+                <div class="format-card__top">
+                  <span class="format-card__index">01</span>
+                  <span class="format-card__kind">Video</span>
+                </div>
+                <div class="format-card__name">MP4</div>
+                <div class="format-card__codec">H.264 + AAC</div>
+                <div class="format-card__bars" data-card-bars aria-hidden="true"></div>
+                <p class="format-card__use">A dependable video file for sharing, archiving, and playback.</p>
+                <div class="format-card__foot">
+                  <span class="format-card__tag">Most compatible</span>
+                  <span class="format-card__ext">.mp4</span>
+                </div>
+              </article>
+              <article class="format-card" data-format-card="webm" data-position="next" aria-hidden="true">
+                <div class="format-card__top">
+                  <span class="format-card__index">02</span>
+                  <span class="format-card__kind">Video</span>
+                </div>
+                <div class="format-card__name">WebM</div>
+                <div class="format-card__codec">VP8 + Vorbis</div>
+                <div class="format-card__bars" data-card-bars aria-hidden="true"></div>
+                <p class="format-card__use">A smaller video file for the web and modern players.</p>
+                <div class="format-card__foot">
+                  <span class="format-card__tag">Smaller files</span>
+                  <span class="format-card__ext">.webm</span>
+                </div>
+              </article>
+              <article class="format-card" data-format-card="mp3" data-position="back" aria-hidden="true">
+                <div class="format-card__top">
+                  <span class="format-card__index">03</span>
+                  <span class="format-card__kind">Audio</span>
+                </div>
+                <div class="format-card__name">MP3</div>
+                <div class="format-card__codec">MPEG audio</div>
+                <div class="format-card__bars" data-card-bars aria-hidden="true"></div>
+                <p class="format-card__use">Audio that plays almost anywhere, at a size that travels well.</p>
+                <div class="format-card__foot">
+                  <span class="format-card__tag">Plays anywhere</span>
+                  <span class="format-card__ext">.mp3</span>
+                </div>
+              </article>
+              <article class="format-card" data-format-card="m4a" data-position="prev" aria-hidden="true">
+                <div class="format-card__top">
+                  <span class="format-card__index">04</span>
+                  <span class="format-card__kind">Audio</span>
+                </div>
+                <div class="format-card__name">M4A</div>
+                <div class="format-card__codec">AAC</div>
+                <div class="format-card__bars" data-card-bars aria-hidden="true"></div>
+                <p class="format-card__use">Clean audio in a compact MP4 container.</p>
+                <div class="format-card__foot">
+                  <span class="format-card__tag">Clean and compact</span>
+                  <span class="format-card__ext">.m4a</span>
+                </div>
+              </article>
+            </div>
+            <p class="format-drag-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 12h8" />
+                <path d="m10 8-4 4 4 4" />
+                <path d="m14 8 4 4-4 4" />
+              </svg>
+              Drag to spin
+            </p>
+            <p class="format-readout sr-only" aria-live="polite" aria-atomic="true" data-format-readout>MP4. H.264 + AAC. A dependable video file for sharing, archiving, and playback.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">The real popup</span>
+            <h2>Small surface. Serious tools.</h2>
+          </div>
+          <p class="lede">Real captures of the extension popup, framed at 400 px. No concept renders.</p>
+        </div>
+
+        <div class="gallery" data-reveal-group>
+          <figure class="gallery-item reveal">
+            <button class="gallery-frame" type="button" data-shot="/assets/img/screen-file.png" data-shot-caption="Convert and trim, File tab" aria-label="Open the Convert and trim screenshot">
+              <img src="/assets/img/screen-file.png" alt="Hopper's File tab with a drop zone, format chips, quality choices, and a convert button." width="1280" height="800" loading="lazy" />
+              <span class="gallery-frame__zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10.5" cy="10.5" r="5.5" />
+                  <path d="M15 15l5 5" />
+                  <path d="M10.5 8v5" />
+                  <path d="M8 10.5h5" />
+                </svg>
+              </span>
+            </button>
+            <figcaption class="gallery-caption">
+              <strong>Convert and trim</strong>
+              <span>File tab</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <button class="gallery-frame" type="button" data-shot="/assets/img/screen-video.png" data-shot-caption="Detected from your tab, Video tab" aria-label="Open the Detected from your tab screenshot">
+              <img src="/assets/img/screen-video.png" alt="Hopper's Video tab with a video detected from the open page, a quality choice, and a download button." width="1280" height="800" loading="lazy" />
+              <span class="gallery-frame__zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10.5" cy="10.5" r="5.5" />
+                  <path d="M15 15l5 5" />
+                  <path d="M10.5 8v5" />
+                  <path d="M8 10.5h5" />
+                </svg>
+              </span>
+            </button>
+            <figcaption class="gallery-caption">
+              <strong>Detected from your tab</strong>
+              <span>Video tab</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <button class="gallery-frame" type="button" data-shot="/assets/img/screen-page.png" data-shot-caption="Find direct media links, Page tab" aria-label="Open the Find direct media links screenshot">
+              <img src="/assets/img/screen-page.png" alt="Hopper's Page tab listing direct media links found on a page." width="1280" height="800" loading="lazy" />
+              <span class="gallery-frame__zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10.5" cy="10.5" r="5.5" />
+                  <path d="M15 15l5 5" />
+                  <path d="M10.5 8v5" />
+                  <path d="M8 10.5h5" />
+                </svg>
+              </span>
+            </button>
+            <figcaption class="gallery-caption">
+              <strong>Find direct media links</strong>
+              <span>Page tab</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell split">
+        <div class="loop reveal" aria-hidden="true">
+          <span class="loop-core">
+            <img src="/assets/img/hopper-mark.svg" alt="" width="48" height="48" />
+          </span>
+          <span class="loop-label loop-label--a">Your file</span>
+          <span class="loop-label loop-label--b">This device</span>
+          <span class="loop-label loop-label--c">Your format</span>
+          <span class="loop-label loop-label--d">No cloud</span>
+        </div>
+        <div class="reveal">
+          <span class="section-kicker">Privacy</span>
+          <h2>Your file stays on your computer.</h2>
+          <p class="lede">No account, no cloud upload, no analytics. Local conversion runs inside the extension, and preferences stay in local browser storage. Auto-detect and web downloads ask the companion for only the page you choose.</p>
+          <div class="split-actions">
+            <a class="button button--secondary" href="/privacy">Read the privacy policy</a>
+            <a class="button button--ghost" href="/terms">Terms of use</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell">
+        <div class="companion reveal">
+          <div class="companion-copy">
+            <span class="companion-badge">Coming soon to the Microsoft Store</span>
+            <h2>The download helper.</h2>
+            <p>The companion is the small Windows app behind auto-detect and web downloads. It fetches the page you choose, keeps a queue, and stays out of the way. Local file conversion works without it. A Microsoft Store listing is coming soon.</p>
+            <div class="split-actions">
+              <a class="button button--secondary" href="/download">See the download options</a>
+            </div>
+          </div>
+          <div class="companion-art" aria-hidden="true">
+            <div class="companion-window">
+              <div class="companion-window__bar">
+                <span class="companion-window__title">Hopper companion</span>
+                <span class="companion-window__dot"></span>
+              </div>
+              <div class="companion-window__row"><span>Auto-detect</span><strong>Ready</strong></div>
+              <div class="companion-window__row"><span>Video downloads</span><strong>Local</strong></div>
+              <div class="companion-window__row"><span>Microsoft Store</span><strong>Coming soon</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--line">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Questions</span>
+            <h2>A few things worth knowing.</h2>
+          </div>
+          <p class="lede">Short answers to the things people ask before installing.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary class="faq-question">Is Hopper free?</summary>
+            <div class="faq-answer"><p>Yes. There is no account, subscription, or paid tier.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">How does auto-detect work?</summary>
+            <div class="faq-answer"><p>Open a supported video page and click Hopper. The Video tab reads the page you are already on, finds the video, and asks the companion for the available formats. No link hunting, no copy-paste.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Can Hopper download videos from the web?</summary>
+            <div class="faq-answer"><p>Yes, on supported video pages. Open the page, click Hopper, and auto-detect finds the video. The companion fetches the format you choose from the web over your own connection and saves it to Downloads. The companion is coming soon to the Microsoft Store; local file conversion works without it. Use it only on media you have the right to download and keep.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Does Hopper upload my files?</summary>
+            <div class="faq-answer"><p>No. Local file conversion happens on your computer. Auto-detect and video downloads use the companion, which fetches the page you choose through your own connection.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Which formats can I choose?</summary>
+            <div class="faq-answer"><p>MP4, WebM, MP3, and M4A. MP4 and WebM are video; MP3 and M4A are audio.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Do I need the companion?</summary>
+            <div class="faq-answer"><p>For local file conversion, no. For auto-detect and video downloads, yes. The companion is a Windows app; its Microsoft Store listing is coming soon.</p></div>
+          </details>
+        </div>
+
+        <div class="split-actions">
+          <a class="button button--secondary" href="/faq">Read all questions</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="shell cta-inner reveal">
+        <div>
+          <h2>Ready when you are.</h2>
+          <p>Download the extension package, or check the page for the Edge Add-ons and Microsoft Store status.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button--large" href="/download">Get Hopper</a>
+          <a class="button button--secondary button--large" href="/privacy">Read the policy</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand-col">
+        <a class="footer-brand" href="/">
+          <img src="/assets/img/hopper-mark.svg" alt="" width="30" height="30" />
+          <span>Hopper</span>
+        </a>
+        <p class="footer-note">Video downloads, conversion, and trimming for Windows and Microsoft Edge. No account, no cloud upload, no analytics.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Product</h3>
+        <a href="/download">Download</a>
+        <a href="/faq">FAQ</a>
+        <a href="/support">Support</a>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a href="mailto:hopperdev@zohomail.com">hopperdev@zohomail.com</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© 2026 Hopper</span>
+      <span>No cookies. No analytics.</span>
+    </div>
+  </footer>
+
+  <dialog class="shot-dialog" data-shot-dialog aria-label="Screenshot viewer">
+    <div class="shot-dialog__panel">
+      <button class="shot-dialog__close" type="button" data-shot-close aria-label="Close screenshot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 6 12 12" />
+          <path d="m18 6-12 12" />
+        </svg>
+      </button>
+      <div class="shot-dialog__frame">
+        <img data-shot-image alt="" width="1280" height="800" />
+      </div>
+      <p class="shot-dialog__caption" data-shot-caption></p>
+    </div>
+  </dialog>
+
+  <script src="/assets/app.js?v=20261026-1" defer></script>
+</body>
+</html>
